@@ -6,7 +6,7 @@ import { createUserWithEmailAndPassword, getAuth , GoogleAuthProvider, onAuthSta
 import SignUp from "./pages/SignUp";
 import SignIn from "./pages/SignIn";
 import { useFirebase } from "./context/firebase";
-import FireStore from "./pages/FireStore";
+// import FireStore from "./pages/FireStore";
 
 // const db = getDatabase(app);
 const auth = getAuth(app);
@@ -20,17 +20,7 @@ function App() {
   const signUpwithGoogle = ()=>{
     signInWithPopup(auth, googleProvider);
   }
-  //   const putData = ()=>{
-  //     set(ref(db, 'users/gg'),{
-  //       id: 1,
-  //       name: "G G",
-  //       age: 18,
-  //     });
-  //   };
 
-  // const signupUser = () => {
-  //   createUserWithEmailAndPassword(auth, "gg@gmail.com", "GG@1102").then((value)=>console.log(value));
-  // };
   useEffect(()=>{
     onAuthStateChanged(auth, (user)=>{
       if(user){
@@ -50,8 +40,7 @@ function App() {
         {" "}
         First Firebase Project{" "}
       </div>
-      {/* <button onClick={putData} className="bg-slate-300 text-black px-5 my-12"> */}
-      {/* <button onClick={signupUser} className="bg-slate-300 text-black px-5 my-12"> */}
+
       <div className="text-3xl bg-slate-300 h-3/4 w-1/2 text-black px-5 pt-12 my-12">
         Create User
         <div className="text-2xl mt-8 mb-4 flex flex-col  font-bold text-blue-700 ">
@@ -101,13 +90,13 @@ function App() {
   }
   return (
     <div> 
-      <h1 className="text-2xl text-center">Hello {user.email}</h1>
-      <div className="main h-screen bg-slate-400 text-xl text-center text-black font-extrabold">
+      <div className="main  min-h-screen py-12 flex flex-col justify-between items-center bg-slate-400 text-xl text-center text-black font-extrabold">
+      <h1 className="text-2xl">Hello {user.email}</h1>
             Main block here 
-            <FireStore />
+            {/* <FireStore /> */}
           
-      </div>
       <button className="text-xl font-bold bg-black text-white px-2 " onClick={()=> signOut(auth)}>Logout</button>
+      </div>
 
     </div>
   );
